@@ -12,7 +12,7 @@ pipeline {
         stage ('Bulding docker docker image') {
             steps {
                 echo "build docker image"
-                sh 'docker build -t demo .'
+                sh 'docker build -t demo:latest .'
             }
         }
         stage ('Uploading to ECR') {
