@@ -28,7 +28,7 @@ pipeline {
            steps {
                 echo "deploying imges to GKE"
                 sh 'kubectl apply -f test-dep.yaml'
-                sh 'kubectl set image deployment/httpd-deployment httpd2=saidevops94/repos:latest'
+                sh 'kubectl set image deployment/httpd-deployment httpd2=387077262115.dkr.ecr.us-east-2.amazonaws.com/demo:latest'
                 sh 'kubectl apply -f test-svc.yaml'
                 sh 'kubectl rollout restart deployment/httpd-deployment'
                 sh 'docker rmi -f $(docker images --filter "dangling=true" -q --no-trunc)'
