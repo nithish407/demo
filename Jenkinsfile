@@ -30,6 +30,7 @@ pipeline {
                 sh 'kubectl apply -f test-dep.yaml'
                 sh 'kubectl set image deployment/httpd-deployment httpd2=387077262115.dkr.ecr.us-east-2.amazonaws.com/demo:latest'
                 sh 'kubectl apply -f test-svc.yaml'
+                sh 'docker images rmi -f $(dcker ps -a -q)
                 sh 'kubectl rollout restart deployment/httpd-deployment'
           
                
