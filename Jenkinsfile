@@ -18,7 +18,7 @@ pipeline {
         stage ('Uploading to ECR') {
             steps {
                 echo "uploading to docker ECR" 
-                sh 'aws ecr get-login --no-include-email'
+                sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo'
                 sh 'docker tag pushtii-ecr-repo:latest 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
                 sh 'docker push 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
             }
