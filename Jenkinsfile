@@ -19,9 +19,7 @@ pipeline {
             steps {
                 echo "uploading to docker ECR" 
                 sh 'aws ecr get-login --no-include-email'
-                sh 'docker tag pushtii-ecr-repo:latest 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest
-
-'
+                sh 'docker tag pushtii-ecr-repo:latest 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
                 sh 'docker push 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
             }
         }
