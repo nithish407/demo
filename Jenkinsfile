@@ -5,22 +5,22 @@ pipeline {
     stage ('git clone') {
             steps {
         echo "code is building"
-         git 'https://github.com/Sridhar9494/Demo.git'
+         git 'https://github.com/nithish407/demo.git'
             }
         }
 
         stage ('Bulding docker docker image') {
             steps {
                 echo "build docker image"
-                sh 'docker build -t pushtii-ecr-repo:latest .'
+                sh 'docker build -t demohtml:latest .'
             }
         }
         stage ('Uploading to ECR') {
             steps {
                 echo "uploading to docker ECR" 
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo'
-                sh 'docker tag pushtii-ecr-repo:latest 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
-                sh 'docker push 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo:latest'
+                sh 'docker tag demohtml:latest 924282698819.dkr.ecr.ap-south-1.amazonaws.com/demohtml:latest'
+                sh 'docker push 924282698819.dkr.ecr.ap-south-1.amazonaws.com/demohtml:latest'
             }
         }
 
