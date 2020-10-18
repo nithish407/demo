@@ -12,15 +12,14 @@ pipeline {
         stage ('Bulding docker docker image') {
             steps {
                 echo "build docker image"
-                sh 'docker build -t demohtml:latest .'
+                sh 'docker build -t demo .'
             }
         }
         stage ('Uploading to ECR') {
             steps {
                 echo "uploading to docker ECR" 
-                sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 387077262115.dkr.ecr.us-east-2.amazonaws.com/pushtii-ecr-repo'
-                sh 'docker tag demohtml:latest 924282698819.dkr.ecr.ap-south-1.amazonaws.com/demohtml:latest'
-                sh 'docker push 924282698819.dkr.ecr.ap-south-1.amazonaws.com/demohtml:latest'
+                sh 'docker tag demo:latest 352950717847.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
+                sh 'docker push 352950717847.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
             }
         }
 
