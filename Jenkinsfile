@@ -12,14 +12,14 @@ pipeline {
         stage ('Bulding docker docker image') {
             steps {
                 echo "build docker image"
-                sh 'docker build -t demo .'
+                sh 'docker build -t ecrdemo .'
             }
         }
         stage ('Uploading to ECR') {
             steps {
                 echo "uploading to docker ECR" 
-                sh 'docker tag demo:latest 352950717847.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
-                sh 'docker push 352950717847.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
+                sh 'docker tag ecrdemo:latest 352950717847.dkr.ecr.ap-south-1.amazonaws.com/ecrdemo:latest'
+                sh 'docker push 352950717847.dkr.ecr.ap-south-1.amazonaws.com/ecrdemo:latest'
             }
         }
 
