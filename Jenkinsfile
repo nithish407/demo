@@ -18,12 +18,12 @@ pipeline {
         stage ('Uploading to ECR') {
             steps {
                 echo "uploading to docker ECR" 
-                sh 'docker tag ecrdemo:latest 352950717847.dkr.ecr.ap-south-1.amazonaws.com/ecrdemo:latest'
-                sh 'docker push 352950717847.dkr.ecr.ap-south-1.amazonaws.com/ecrdemo:latest'
+                sh 'docker tag ecrdemo:latest 910130889522.dkr.ecr.us-east-1.amazonaws.com/ecrdemo:latest'
+                sh 'docker push 910130889522.dkr.ecr.us-east-1.amazonaws.com/ecrdemo:latest'
             }
         }
 
-        stage ('deploying to GKE') {
+      /*  stage ('deploying to GKE') {
            steps {
                 echo "deploying imges to GKE"
                 sh 'kubectl apply -f test-dep.yaml'
@@ -32,7 +32,7 @@ pipeline {
                 sh 'kubectl rollout restart deployment/httpd-deployment'
             
            }
-    }  
+    }  */
         
 }
 
